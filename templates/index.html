@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <h1>My Tasks</h1>
+        <p id="summary" class="muted">Loading…</p>
+      </div>
+      <div class="ring" aria-label="Progress"><span id="pct">0%</span></div>
+    </header>
+    <div class="bar"><div id="bar"></div></div>
+
+    <form id="addForm" class="add">
+      <input id="title" placeholder="What needs to be done?" maxlength="120" required autocomplete="off">
+      <select id="priority" aria-label="Priority">
+        <option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option>
+      </select>
+      <input id="due" type="date" aria-label="Due date">
+      <button class="primary" type="submit">Add</button>
+    </form>
+    <p id="err" class="err" role="alert"></p>
+
+    <div class="tools">
+      <div class="tabs" id="tabs">
+        <button data-f="all" class="on">All</button><button data-f="active">Active</button><button data-f="done">Done</button>
+      </div>
+      <input id="search" type="search" placeholder="Search tasks" aria-label="Search tasks">
+    </div>
+
+    <ul id="list" class="list"></ul>
+    <p id="empty" class="empty" hidden>Nothing here yet. Add your first task above.</p>
+    <button id="clear" class="link">Clear completed</button>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
